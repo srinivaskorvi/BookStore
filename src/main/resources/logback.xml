@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    	<layout class="ch.qos.logback.classic.PatternLayout">
+      		<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+    	</layout>
+  	</appender>  
+  
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>C:/test/MyLog.log</file>
+    	<layout class="ch.qos.logback.classic.PatternLayout">
+      		<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+    	</layout>
+ 	</appender>
+ 	
+ 	<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+    	<connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
+      		<dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        		<driverClass>com.mysql.jdbc.Driver</driverClass>
+        		<jdbcUrl>jdbc:mysql://localhost:3306/bookstore</jdbcUrl>
+        		<user>root</user>
+        		<password>root</password>
+      		</dataSource>
+    	</connectionSource>
+  	</appender>
+ 	
+    
+  	<logger name="com.newcompany.book_store" level="TRACE"/>  
+	
+	<root level="debug">
+    	<appender-ref ref="STDOUT" />
+    	<appender-ref ref="FILE" />
+  	</root>
+  	
+</configuration>

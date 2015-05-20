@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ibatorConfiguration
+  PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
+
+<ibatorConfiguration>
+   <classPathEntry location="D:\dev\tools\iBATIS\mysql-connector-java-5.1.23-bin.jar" />
+
+  <ibatorContext id="ibatorContext" targetRuntime="Ibatis2Java5">
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/bookstore"
+        userId="root"
+        password="root">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="com.bookStore.model" targetProject="com.newcompany.book-store-0.0.1-SNAPSHOT">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="com.bookStore.dbMaps"  targetProject="com.newcompany.book-store-0.0.1-SNAPSHOT">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <daoGenerator type="GENERIC-CI" targetPackage="com.bookStore.daoGenericCI"  targetProject="com.newcompany.book-store-0.0.1-SNAPSHOT">
+      <property name="enableSubPackages" value="true" />
+    </daoGenerator>
+
+    <table tableName="author" >
+      <property name="useActualColumnNames" value="true"/>
+    </table>
+    
+  </ibatorContext>
+</ibatorConfiguration>
